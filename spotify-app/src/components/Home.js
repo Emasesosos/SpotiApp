@@ -1,50 +1,73 @@
 import React, { Component } from 'react'
-// import axios from 'axios';
-import { getNewReleases } from './../services/spotify';
+import axios from 'axios';
 
 class Home extends Component {
 
     state = {
-        paises: [],
-        data: []
+        releases: [],
+        songs: [],
+        artists: []
     }
 
-    async componentDidMount() {
+    componentDidMount() {
 
-        const token = 'Bearer BQC9S47MBqWg06sipjMVbS8A2kp_WebgjBAgUQADc6F_mbUHxFfFEsw-gqxkjDYDprr4xxf8mpzafuagdvo';
+        this.getNewReleases();
 
+    }
+
+    getNewReleases = async () => {
+        console.log('Servicio de Spotify Listo');
+
+        const token = 'Bearer BQD_gA5RFIvtmoBga2RKAu6vn60FjxijKlwItPlHpz9PbCqTed3n002NzehDkHT-iHx3_j930CuWATq90gY';
         const headers = {
             headers: {
                 Authorization: token
             }
-        }
+        };
 
-        const data = getNewReleases(headers);
-        
+        const res = await axios.get('https://api.spotify.com/v1/browse/new-releases?limit=20', headers);
+        //console.log(res.data);
+        const { items } = res.data.albums;
+        //const artists = items.artists;
         this.setState({
-            data
-        })
-        
-        /* ***** Ejemplo de Consumo de API con React ***** */
-        // const res = await axios.get('https://restcountries.eu/rest/v2/lang/es');
-        // console.log(res);
-        // const { data } = res;
-        // console.log(data);
-        // this.setState({
-            // paises: data
-        // })
-        // console.log(this.state.paises);
+            releases: res.data,
+            songs: items,
+            //artists: artists
+        });
+        console.log(this.state.releases);
+        console.log(this.state.songs);
+        //console.log(this.state.artists);
+
     }
 
     render() {
-        const paises = this.state.paises;
+        const songs = this.state.songs;
+        //const artists = this.state.songs.artists;
+        console.log(songs);
+        //console.log(artists);
         return (
-            <div>
-                {paises.map(pais =>
-                    <li key={pais.population}>
-                        {pais.name} - {(pais.population).toLocaleString(undefined, {maximumFractionDigits:2})}
-                    </li>
-                )}
+            <div className="card-columns">
+                {
+                    songs.map(song => (
+                        <div className="card" key={song.id}>
+                            <img src={song.images[0].url} className="card-img-top" alt="..."/>
+                            <div className="card-body">
+                                <h5 className="card-title">
+                                    {song.name}
+                                </h5>
+                                <p className="card-text">
+                                    { 
+                                        (song.artists).map(artist => (
+                                            <span className="badge badge-pill badge-primary" key={artist.id}>
+                                                {artist.name}
+                                            </span>
+                                        ))
+                                    }
+                                </p>
+                            </div>
+                        </div>
+                    ))
+                }
             </div>
         )
     }
