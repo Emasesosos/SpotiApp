@@ -18,7 +18,7 @@ class Home extends Component {
     getNewReleases = async () => {
         console.log('Servicio de Spotify Listo');
 
-        const token = 'Bearer BQD_gA5RFIvtmoBga2RKAu6vn60FjxijKlwItPlHpz9PbCqTed3n002NzehDkHT-iHx3_j930CuWATq90gY';
+        const token = 'Bearer BQC8JAW4Z2MXi4YzJLYtZmLA4nRBwbE-GXiR1MMLTSA6O4BB3yhPu86DfaCv4rOO7tUv9Qvlj2TpH1HssWQ';
         const headers = {
             headers: {
                 Authorization: token
