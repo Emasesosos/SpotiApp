@@ -31,10 +31,10 @@ class Search extends Component {
             let url = `https://api.spotify.com/v1/search?q=${artista}&type=artist&limit=15`;
             let res = await axios.get(url, headers);
             let artistas = res.data.artists.items;
-            this.setState({
-                artista,
-                artistas
-            })
+            // this.setState({
+            //     artista,
+            //     artistas
+            // })
             const lengthArtista = this.state.artista;
             const lengthArtistas = this.state.artistas;
             console.log(this.state.artista);
@@ -43,6 +43,7 @@ class Search extends Component {
             console.log(lengthArtistas.length); 
             if(lengthArtistas.length > 0) {
                 this.setState({
+                    artista,
                     artistas
                 })
                 console.log(lengthArtistas.length); 
