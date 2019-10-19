@@ -36,6 +36,7 @@ hr {
     height: 50px;
 }
 
+
 /* Animaciones */
 
 .animated {
@@ -65,3 +66,6 @@ hr {
     animation-name: fadeIn;
 }
 
+h1 {
+    color: black;
+}

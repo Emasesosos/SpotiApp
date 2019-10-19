@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios';
+import { headers, version } from './helper';
 
 class Home extends Component {
 
@@ -10,22 +11,15 @@ class Home extends Component {
     }
 
     componentDidMount() {
-
         this.getNewReleases();
-
     }
 
     getNewReleases = async () => {
         console.log('Servicio de Spotify Listo');
-
-        const token = 'Bearer BQBq4228ioP-kQH5kT0uk_khGH_x03pNgRjD3r85sP3tc8nPwWXCDTnsTyvvJbng3Ty2HQQ2153m16lM5po';
-        const headers = {
-            headers: {
-                Authorization: token
-            }
-        };
-
-        const res = await axios.get('https://api.spotify.com/v1/browse/new-releases?limit=20', headers);
+        
+        const query = 'browse/new-releases?limit=20';
+        const url = version+query;
+        const res = await axios.get(url, headers);
         //console.log(res.data);
         const { items } = res.data.albums;
         //const artists = items.artists;
@@ -34,8 +28,8 @@ class Home extends Component {
             songs: items,
             //artists: artists
         });
-        console.log(this.state.releases);
-        console.log(this.state.songs);
+        //console.log(this.state.releases);
+        //console.log(this.state.songs);
         //console.log(this.state.artists);
 
     }
