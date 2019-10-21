@@ -1,4 +1,4 @@
-const token = 'Bearer BQCfOjWX-OOQJsV0QdQCZsbVy4nsYii_INf2i3AN1hrMkbblhbWIuLtwsN3xIomCuECpQVXSrYtBa6KSong';
+const token = 'Bearer BQAEYSoum-c5KS9D9cbSQbR_59vyMYUgBta-C8Xw7dhGmm7agVf-aTyc8pYyu_X3XEs71pLbQo3jL-pKiSQ';
 
 export const headers = {
     headers: {

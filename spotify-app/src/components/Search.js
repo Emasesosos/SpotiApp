@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios';
 import { headers, version } from './helper';
+import Loading from './Loading';
 
 import spotify from './../img/banner-ico.png';
 
@@ -38,6 +39,14 @@ class Search extends Component {
         
     }
 
+    verArtista = (e) => {
+        console.log('Click Ver Artista');
+        console.log(e);
+        console.log(e.id);
+        const idArtist = e.id;
+        window.open(`http://localhost:3000/artist/${idArtist}`);
+    }
+
     render() {
 
         const artistas = this.state.artistas;
@@ -45,7 +54,10 @@ class Search extends Component {
         
         return (
             <div>
-                <div className="row">
+                <div>
+                    <Loading/>
+                </div>
+                <div className="row m-5">
                     <div className="col">
                         <input type="text" className="form-control" placeholder="Buscar Artista..." onChange={e => this.buscar(e)}/>
                     </div>
@@ -66,7 +78,7 @@ class Search extends Component {
 
                             }
 
-                            return <div className="card"  key={artista.id}>
+                            return <div className="card puntero"  key={artista.id} onClick={e => this.verArtista(artista)}>
                                         {img}
                                         <div className="card-body">
                                             <h5 className="card-title"> {artista.name} </h5>
