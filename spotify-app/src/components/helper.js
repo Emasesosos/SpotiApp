@@ -1,6 +1,6 @@
-const token = 'Bearer BQCXqgRsXwrcCQI0ilMXRvR9Y9INyms6f-T4f6rgQrNJocFTnlZLxz34uSmaQ08jOqTHPT95EjTTwteMiA8';
+const token = 'Bearer BQD7qY5brVtYiGAhwHddrSEm3PlUM1WB7AbfjhXHTL108IjwjV9NpnYs4L3URXHoR92r5hMaVUOWiIaFlaE';
 
-export const headers = {
+export const headers = { 
     headers: {
         Authorization: token
     }
