@@ -38,4 +38,4 @@ class Home extends Component {
     }
 }
 
-export default Home; hol 
+export default Home; 
