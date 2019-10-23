@@ -23,7 +23,7 @@ class InfoHome extends Component {
         const url = version+query;
 
         let res = '';
-        try {
+        try { 
             res = await axios.get(url, headers);
             console.log(res.data);
             console.log(res);
